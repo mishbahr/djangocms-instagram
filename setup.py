@@ -25,7 +25,7 @@ readme = open('README.rst').read()
 setup(
     name='djangocms-instagram',
     version=version,
-    description="""A simple but versatile django-cms plugin that allows you to display your latest photos or other users photos (from any non-private Instagram account), tagged photos, photos from a place or location or your favourite photos.""",
+    description="""A simple but versatile Instagram plugin for your django-cms powered sites.""",
     long_description=readme,
     author='Mishbah Razzaque',
     author_email='mishbahx@gmail.com',
