@@ -1,5 +1,4 @@
 {% load cms_tags i18n sekizai_tags staticfiles %}
-{% comment %}
 <div class="instagram">
 	{% with instance.get_media as media_feed %}
 	<div class="media-feed">
@@ -46,27 +45,4 @@
 	</div>
 	{% endwith %}
 </div>
-{% endcomment %}
 <header>
-
-<div class="container instagram">
-    <div class="row">
-		{% for media in instance.get_media %}
-        <div class="col-sm-2 no-gutter">
-            <img src="{{ media.images.standard_resolution.url }}" class="img-responsive">
-        </div>
-		{% endfor %}
-    </div>
-</div>
-
-{% addtoblock 'css' %}
-	<style type="text/css">
-		.instagram {
-			margin-top: 50px;
-		}
-		.no-gutter {
-			padding-right:0;
-			padding-left:0;
-		}
-	</style>
-{% endaddtoblock %}
