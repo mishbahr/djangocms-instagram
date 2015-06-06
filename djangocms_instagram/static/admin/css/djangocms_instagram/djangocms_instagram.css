@@ -1,0 +1,36 @@
+.change-form fieldset.media-source .form-row {
+    border-bottom: none;
+}
+
+.instagram-lookup .search {
+    margin-left: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+}
+
+.instagram-lookup .label {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.search-list #toolbar {
+    margin-bottom: 10px;
+}
+
+.pac-container:after {
+    background-image: none !important;
+    height: 0px;
+}
+
+.api-error {
+    font-size: 12px !important;
+    font-weight: bold;
+    display: block;
+    padding: 5px 5px 4px 25px;
+    margin: 0 0 3px 0;
+    border: 1px solid #c22;
+    color: #c11;
+    background-color: #ffefef;
+}

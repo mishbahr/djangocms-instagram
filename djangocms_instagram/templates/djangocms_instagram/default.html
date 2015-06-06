@@ -1,0 +1,72 @@
+{% load cms_tags i18n sekizai_tags staticfiles %}
+{% comment %}
+<div class="instagram">
+	{% with instance.get_media as media_feed %}
+	<div class="media-feed">
+		{% for media in media_feed %}
+		<div class="photo photo-{{ forloop.counter }}" id="media-{{ media.id}}">
+			<div class="header">
+				<div class="user">
+					<a href="http://www.instagram.com/{{ media.user.username }}" target="_blank">
+						{{ media.user.full_name }} ({{ media.user.username }})
+					</a>
+				</div>
+				<div class="avatar">
+					<a href="http://www.instagram.com/{{ media.user.username }}" target="_blank">
+						<img class="profile" src="{{ media.user.profile_picture }}"
+							 alt="{{ media.user.full_name }}">
+					</a>
+				</div>
+				<div class="timestamp">
+					{{ media.created_time|date:'SHORT_DATETIME_FORMAT' }}
+				</div>
+			</div>
+			<div class="media {{ media.type }} {{ media.filter|lower }}">
+				<a href="{{ media.link }}" target="_blank">
+					<img src="{{ media.images.standard_resolution.url }}"
+						 alt="{{ media.caption.text }}">
+				</a>
+			</div>
+
+			{% if media.caption %}
+			<div class="caption">
+				{{ media.caption.text }}
+			</div>
+			{% endif %}
+			<div class="stats">
+				<div class="likes">
+					{{ media.like_count }} like{{ media.like_count|pluralize }}
+				</div>
+				<div class="comments">
+					{{ media.comment_count }} comment{{ media.comment_count|pluralize }}
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endwith %}
+</div>
+{% endcomment %}
+<header>
+
+<div class="container instagram">
+    <div class="row">
+		{% for media in instance.get_media %}
+        <div class="col-sm-2 no-gutter">
+            <img src="{{ media.images.standard_resolution.url }}" class="img-responsive">
+        </div>
+		{% endfor %}
+    </div>
+</div>
+
+{% addtoblock 'css' %}
+	<style type="text/css">
+		.instagram {
+			margin-top: 50px;
+		}
+		.no-gutter {
+			padding-right:0;
+			padding-left:0;
+		}
+	</style>
+{% endaddtoblock %}
