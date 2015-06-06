@@ -20,8 +20,6 @@ djangocms-instagram
 .. image:: http://img.shields.io/coveralls/mishbahr/djangocms-instagram.svg?style=flat-square
   :target: https://coveralls.io/r/mishbahr/djangocms-instagram?branch=master
 
-A simple but versatile django-cms plugin that allows you to display your latest photos or other users photos (from any non-private Instagram account), tagged photos, photos from a place or location or your favourite photos.
-
 This project requires `django-connected <https://github.com/mishbahr/django-connected>`_ and ``django-cms`` v3.0 or higher to be properly installed and configured. When installing the ``djangocms-instagram`` using pip, ``django-connected`` will also be installed automatically.
 
 Preview
