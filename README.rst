@@ -71,16 +71,16 @@ Quickstart
 
 
 
-Configuration
+Configuration (settings.py)
 --------------
 
 Plugin(s) Module - If module is None, plugin is grouped Generic group::
 
-    DJANGOCMS_INSTAGRAM_PLUGIN_MODULE = _('Generic')
+    DJANGOCMS_INSTAGRAM_PLUGIN_MODULE = gettext('Generic')
 
 Name of the plugin::
 
-    DJANGOCMS_INSTAGRAM_PLUGIN_NAME = _('Instagram')
+    DJANGOCMS_INSTAGRAM_PLUGIN_NAME = gettext('Instagram')
 
 Can this plugin only be attached to a placeholder that is attached to a page::
 
