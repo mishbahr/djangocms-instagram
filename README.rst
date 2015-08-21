@@ -116,4 +116,4 @@ You may also like...
 * djangocms-gmaps — https://github.com/mishbahr/djangocms-gmaps
 * djangocms-responsive-wrapper — https://github.com/mishbahr/djangocms-responsive-wrapper
 * djangocms-twitter2 — https://github.com/mishbahr/djangocms-twitter2
-* djangocms-youtube - https://github.com/mishbahr/djangocms-youtube
+* djangocms-youtube — https://github.com/mishbahr/djangocms-youtube
