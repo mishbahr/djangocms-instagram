@@ -27,20 +27,22 @@ This project requires `django-connected <https://github.com/mishbahr/django-conn
 Preview
 --------
 
-.. image:: http://mishbahr.github.io/djangocms-instagram/assets/djangocms-instagram_001.png
-  :target: http://mishbahr.github.io/djangocms-instagram/assets/djangocms-instagram_001.png
+.. image:: http://mishbahr.github.io/assets/djangocms-instagram/thumbnail/djangocms-instagram-001.png
+  :target: http://mishbahr.github.io/assets/djangocms-instagram/djangocms-instagram-001.png
   :width: 768px
   :align: center
 
-.. image:: http://mishbahr.github.io/djangocms-instagram/assets/djangocms-instagram_002.png
-  :target: http://mishbahr.github.io/djangocms-instagram/assets/djangocms-instagram_002.png
+
+.. image:: http://mishbahr.github.io/assets/djangocms-instagram/thumbnail/djangocms-instagram-002.png
+  :target: http://mishbahr.github.io/assets/djangocms-instagram/djangocms-instagram-002.png
   :width: 768px
   :align: center
 
-.. image:: http://mishbahr.github.io/djangocms-instagram/assets/djangocms-instagram_003.png
-  :target: http://mishbahr.github.io/djangocms-instagram/assets/djangocms-instagram_003.png
-  :width: 768px
+.. image:: http://mishbahr.github.io/assets/djangocms-instagram/thumbnail/djangocms-instagram-003.png
+  :target: http://mishbahr.github.io/assets/djangocms-instagram/djangocms-instagram-003.png
+  :width: 480px
   :align: center
+
 
 Quickstart
 ----------
