@@ -15,9 +15,12 @@ version = djangocms_instagram.__version__
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
-    print("You probably want to also tag the version now:")
-    print("  git tag -a %s -m 'version %s'" % (version, version))
-    print("  git push --tags")
+    sys.exit()
+
+if sys.argv[-1] == 'tag':
+    print('Tagging the version on github:')
+    os.system('git tag -a %s -m "version %s"' % (version, version))
+    os.system('git push --tags')
     sys.exit()
 
 readme = open('README.rst').read()
