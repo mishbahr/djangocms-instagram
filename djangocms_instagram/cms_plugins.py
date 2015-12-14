@@ -106,8 +106,8 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
                 distance=2000,
             )
         except (InstagramAPIError, InstagramClientError) as e:
-            msg = _('Failed location lookup: LatLng({0}, {1}) - Reason: {2}').format(
-                request.GET.get('lat', ''), request.GET.get('lng', ''), e)
+            msg = _('Failed location lookup: LatLng({lat}, {lng}) - Reason: {error}').format(
+                lat=request.GET.get('lat', ''), lng=request.GET.get('lng', ''), error=e)
             logger.error(msg)
 
             errors = e.error_message
@@ -135,8 +135,8 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
                 count=20,
             )
         except (InstagramAPIError, InstagramClientError) as e:
-            msg = _('Failed user lookup: {0} - Reason: {1}').format(
-                request.GET.get('username'), e)
+            msg = _('Failed user lookup: {username} - Reason: {error}').format(
+                username=request.GET.get('username'), error=e)
             logger.error(msg)
 
             errors = e.error_message

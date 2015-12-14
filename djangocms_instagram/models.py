@@ -67,30 +67,32 @@ class Instagram(CMSPlugin):
         if self.source == self.MEDIA_SOURCE_FEED:
             profile_data = self.get_profile()
             if ERROR_VAR in profile_data:
-                return _('Error: {0}').format(profile_data.get(ERROR_VAR))
+                return _('Error: {error}').format(error=profile_data.get(ERROR_VAR))
 
             name = profile_data.get('full_name')
             username = profile_data.get('username')
-            return _('Photos/Videos published by {0} ({1})').format(name, username)
+            return _('Photos/Videos published by {name} ({username})').format(
+                name=name, username=username)
 
         if self.source == self.MEDIA_SOURCE_LIKE:
             profile_data = self.get_profile(user_id=self.account.uid)
             if ERROR_VAR in profile_data:
-                return _('Error: {0}').format(profile_data.get(ERROR_VAR))
+                return _('Error: {error}').format(error=profile_data.get(ERROR_VAR))
 
             name = profile_data.get('full_name')
             username = profile_data.get('username')
-            return _('Photos/Videos liked by {0} ({1})').format(name, username)
+            return _('Photos/Videos liked by {name} ({username})').format(
+                name=name, username=username)
 
         if self.source == self.MEDIA_SOURCE_LOCATION:
             location_data = self.get_location()
             if ERROR_VAR in location_data:
-                return _('Error: {0}').format(location_data.get(ERROR_VAR))
+                return _('Error: {error}').format(error=location_data.get(ERROR_VAR))
             else:
-                return _('Photos/Videos from {0}').format(location_data.get('name', ''))
+                return _('Photos/Videos from {name}').format(name=location_data.get('name', ''))
 
         if self.source == self.MEDIA_SOURCE_TAG:
-            return _('Photos/Videos about #{0}').format(self.hashtag.lstrip('#').strip())
+            return _('Photos/Videos about #{tag}').format(tag=self.hashtag.lstrip('#').strip())
 
     def save(self, *args, **kwargs):
         super(Instagram, self).save(*args, **kwargs)
@@ -111,7 +113,7 @@ class Instagram(CMSPlugin):
         return self._api
 
     def get_cache_key(self, prefix=''):
-        return 'djangocms-instagram-{0}-{1}'.format(prefix, str(self.id))
+        return 'djangocms-instagram-{prefix}-{id}'.format(prefix=prefix, id=str(self.id))
 
     def get_profile(self, user_id=None):
         if not user_id:
@@ -121,7 +123,7 @@ class Instagram(CMSPlugin):
             else:
                 user_id = self.account.uid
 
-        cache_key = self.get_cache_key(prefix='profile_%s' % user_id)
+        cache_key = self.get_cache_key(prefix='profile_{user_id}'.format(user_id=user_id))
 
         data = cache.get(cache_key) or {}
 
@@ -135,7 +137,8 @@ class Instagram(CMSPlugin):
                 data = api.user(user_id)
             except (InstagramAPIError, InstagramClientError) as e:
                 msg = _('Failed to retrieve information '
-                        'for user-id: {0} - Reason: {1}').format(user_id, e)
+                        'for user-id: {user_id} - Reason: {error}').format(
+                    user_id=user_id, error=e)
                 logger.error(msg)
                 data[ERROR_VAR] = str(e.error_message)
             else:
@@ -156,7 +159,8 @@ class Instagram(CMSPlugin):
         if not location_id:
             location_id = self.location_id.strip()
 
-        cache_key = self.get_cache_key(prefix='location_%s' % location_id)
+        cache_key = self.get_cache_key(prefix='location_{location_id}'.format(
+            location_id=location_id))
         data = cache.get(cache_key) or {}
 
         if not data:
@@ -169,7 +173,8 @@ class Instagram(CMSPlugin):
                 location = api.location(location_id)
             except (InstagramAPIError, InstagramClientError) as e:
                 msg = _('Failed to retrieve information '
-                        'for location ID: {0} - Reason: {1}').format(location_id, e)
+                        'for location ID: {location_id} - Reason: {error}').format(
+                    location_id=location_id, error=e)
                 logger.error(msg)
                 data[ERROR_VAR] = str(e.error_message)
             else:
@@ -240,7 +245,7 @@ class Instagram(CMSPlugin):
                         media.extend(media_feed)
 
             except (InstagramAPIError, InstagramClientError) as e:
-                msg = _('Failed to retrieve media - Reason: {error_msg}').format(error_msg=e)
+                msg = _('Failed to retrieve media - Reason: {error}').format(error=e)
                 logger.error(msg)
             else:
                 cache.set(cache_key, media, settings.DJANGOCMS_INSTAGRAM_CACHE_DURATION)
