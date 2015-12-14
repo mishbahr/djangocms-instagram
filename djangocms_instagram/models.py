@@ -240,7 +240,7 @@ class Instagram(CMSPlugin):
                         media.extend(media_feed)
 
             except (InstagramAPIError, InstagramClientError) as e:
-                msg = _('Failed to retrieve media - Reason: {}').format(e)
+                msg = _('Failed to retrieve media - Reason: {error_msg}').format(error_msg=e)
                 logger.error(msg)
             else:
                 cache.set(cache_key, media, settings.DJANGOCMS_INSTAGRAM_CACHE_DURATION)
