@@ -67,7 +67,7 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
             return app_label, self.model._meta.module_name
 
     def get_form(self, request, obj=None, **kwargs):
-        kwargs['formfield_callback'] = partial(self.formfield_for_dbfield, obj=obj)
+        kwargs['formfield_callback'] = partial(self.formfield_for_dbfield, obj=obj, request=request)
         return super(InstagramPlugin, self).get_form(request, obj, **kwargs)
 
     def get_plugin_urls(self):
@@ -165,7 +165,7 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
     def icon_src(self, instance):
         return settings.STATIC_URL + 'admin/img/djangocms_instagram/instagram_icon.png'
 
-    def formfield_for_dbfield(self, db_field, **kwargs):
+    def formfield_for_dbfield(self, db_field, request, **kwargs):
         db = kwargs.get('using')
         obj = kwargs.pop('obj', None)
 
@@ -176,7 +176,7 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
                 kwargs['widget'] = UserLookupWidget(obj, self.admin_site, using=db)
 
             return db_field.formfield(**kwargs)
-        return super(InstagramPlugin, self).formfield_for_dbfield(db_field, **kwargs)
+        return super(InstagramPlugin, self).formfield_for_dbfield(db_field, request, **kwargs)
 
     class Media:
         css = {
