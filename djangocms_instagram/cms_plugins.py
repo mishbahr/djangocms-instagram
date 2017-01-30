@@ -71,18 +71,17 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
         return super(InstagramPlugin, self).get_form(request, obj, **kwargs)
 
     def get_plugin_urls(self):
-        from django.conf.urls import patterns, url
+        from django.conf.urls import url
         info = self.get_model_info()
 
-        return patterns(
-            '',
+        return [
             url(r'^locations/search/$',
                 admin.site.admin_view(self.locations_search),
                 name='%s_%s_locations_search' % info),
             url(r'^users/search/$',
                 admin.site.admin_view(self.users_search),
                 name='%s_%s_users_search' % info),
-        )
+        ]
 
     def get_api(self, request):
         if not hasattr(self, '_api'):
