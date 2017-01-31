@@ -73,7 +73,7 @@ Quickstart
 
 
 
-Configuration
+Configuration (settings.py)
 --------------
 
 Plugin(s) Module - If module is None, plugin is grouped Generic group::
@@ -83,6 +83,9 @@ Plugin(s) Module - If module is None, plugin is grouped Generic group::
 Name of the plugin::
 
     DJANGOCMS_INSTAGRAM_PLUGIN_NAME = _('Instagram')
+    
+If you get an error ``NameError: name '_' is not defined`` error add ``_ = lambda s: s`` above them
+
 
 Can this plugin only be attached to a placeholder that is attached to a page::
 
