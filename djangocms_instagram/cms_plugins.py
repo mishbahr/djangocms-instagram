@@ -46,7 +46,7 @@ class InstagramPlugin(ConnectedAccountAdminMixin, CMSPluginBase):
             'fields': ('source', 'user_id', 'hashtag', 'location_id', )
         }),
         (None, {
-            'fields': ('no_of_items', 'plugin_template', )
+            'fields': ('no_of_items', 'headline', 'media_link_text', 'plugin_template', )
         }),
     )
 
