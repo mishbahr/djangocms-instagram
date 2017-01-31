@@ -1,5 +1,7 @@
 {% load cms_tags i18n sekizai_tags staticfiles %}
 <div class="instagram">
+	<h2 class="headline">{{ instance.headline }}</h2>
+
 	{% with instance.get_media as media_feed %}
 	<div class="media-feed">
 		{% for media in media_feed %}
@@ -26,6 +28,13 @@
 						 alt="{{ media.caption.text }}">
 				</a>
 			</div>
+			{% if instance.media_link_text %}
+			<div class="media {{ media.type }} {{ media.filter|lower }}">
+				<a href="{{ media.link }}" target="_blank">
+					{{ instance.media_link_text }}
+				</a>
+			</div>
+			{% endif %}
 
 			{% if media.caption %}
 			<div class="caption">
