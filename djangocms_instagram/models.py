@@ -44,6 +44,12 @@ class Instagram(CMSPlugin):
     no_of_items = models.IntegerField(
         _('Items to Display'), default=10,
         help_text=_('Select the number of items this plugin should display'))
+    headline = models.CharField(
+        _('Headline'), max_length=150, blank=True, default=_('Headline'),
+        help_text=_('Enter the headline for this plugin'))
+    media_link_text = models.CharField(
+        _('Media link text'), max_length=50, blank=True, default=_('See on Instagram'),
+        help_text=_('Enter the text for media link'))
     plugin_template = models.CharField(
         _('Design'), max_length=150,
         choices=settings.DJANGOCMS_INSTAGRAM_TEMPLATES,
