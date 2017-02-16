@@ -23,14 +23,4 @@ class Migration(migrations.Migration):
             name='media_link_text',
             field=models.CharField(blank=True, default='See on Instagram', help_text='Enter the text for media link', max_length=50, verbose_name='Media link text'),
         ),
-        migrations.AlterField(
-            model_name='instagram',
-            name='cmsplugin_ptr',
-            field=models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='djangocms_instagram_instagram', serialize=False, to='cms.CMSPlugin'),
-        ),
-        migrations.AlterField(
-            model_name='instagram',
-            name='plugin_template',
-            field=models.CharField(choices=[('djangocms_instagram/default.html', 'Default')], default='djangocms_instagram/default.html', max_length=150, verbose_name='Design'),
-        ),
     ]
