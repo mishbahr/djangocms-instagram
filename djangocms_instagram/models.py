@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
+
 
 import logging
 
@@ -40,7 +40,9 @@ class Instagram(CMSPlugin):
     )
     account = AccountField(
         'instagram', verbose_name=_('Connected Account'),
-        help_text=_('Select a connected Instagram account or connect to a new account.'))
+        help_text=_('Select a connected Instagram account or connect to a new account.'),
+        on_delete=models.CASCADE,
+    )
     no_of_items = models.IntegerField(
         _('Items to Display'), default=10,
         help_text=_('Select the number of items this plugin should display'))
